@@ -1,0 +1,47 @@
+{
+  "type": "detection",
+  "id" : "wordpress",
+  "description" : "This template allows both detecting and correlating dynamic values in Wordpress.",
+  "version" : "0.1",
+  "author" : "BZM",
+  "url" : "",
+  "components" : "",
+  "responseFilters" : "",
+  "groups" : [ {
+    "id" : "wordpress",
+    "rules" : [ {
+      "detection" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.detection.RegexDetector",
+        "regex" : "_wpnonce=(.*)\""
+      },
+      "enabled" : true
+    }, {
+      "detection" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.detection.RegexDetector",
+        "regex" : "<title>(.*)</title>"
+      },
+      "enabled" : true
+    } ],
+    "enable" : true
+  }, {
+    "id" : "wordpress-before-v8",
+    "rules" : [ {
+      "detection" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.detection.RegexDetector",
+        "regex" : ">(About Wordpress)<"
+      },
+      "enabled" : true
+    }, {
+      "detection" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.detection.RegexDetector",
+        "regex" : "wpnonce:(.*)"
+      },
+      "enabled" : true
+    } ],
+    "enable" : true
+  } ],
+  "dependencies" : [ ],
+  "repositoryId" : "local",
+  "changes" : "Added more rules",
+  "installed" : false
+}

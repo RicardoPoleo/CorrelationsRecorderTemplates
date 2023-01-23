@@ -1,0 +1,62 @@
+{
+  "type": "correlation",
+  "id" : "wordpress",
+  "description" : "This template allows both detecting and correlating dynamic values in Wordpress.",
+  "version" : "0.1",
+  "author" : "BZM",
+  "url" : "",
+  "components" : "",
+  "responseFilters" : "",
+  "groups" : [ {
+    "id" : "wordpress",
+    "rules" : [ {
+      "referenceName" : "sessionNonce",
+      "correlationExtractor" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.extractors.RegexCorrelationExtractor",
+        "regex" : "_wpnonce=(.*)\""
+      },
+      "correlationReplacement" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.replacements.RegexCorrelationReplacement",
+        "regex" : "_wpnonce=(.*)"
+      },
+      "enabled" : true
+    }, {
+      "referenceName" : "inTitle",
+      "correlationExtractor" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.extractors.RegexCorrelationExtractor"
+      },
+      "correlationReplacement" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.replacements.RegexCorrelationReplacement"
+      },
+      "enabled" : true
+    } ],
+    "enable" : true
+  }, {
+    "id" : "wordpress-before-v8",
+    "rules" : [ {
+      "referenceName" : "inText",
+      "correlationExtractor" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.extractors.RegexCorrelationExtractor"
+      },
+      "correlationReplacement" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.replacements.RegexCorrelationReplacement"
+      },
+      "enabled" : true
+    }, {
+      "referenceName" : "inUrl",
+      "correlationExtractor" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.extractors.RegexCorrelationExtractor",
+        "target" : "URL"
+      },
+      "correlationReplacement" : {
+        "type" : "com.blazemeter.jmeter.correlation.core.replacements.RegexCorrelationReplacement"
+      },
+      "enabled" : true
+    } ],
+    "enable" : true
+  } ],
+  "dependencies" : [ ],
+  "repositoryId" : "local",
+  "changes" : "Added more rules",
+  "installed" : false
+}
